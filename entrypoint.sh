@@ -40,6 +40,9 @@ aws configure set default.region "${AWS_DEFAULT_REGION}"
 
 cd "${GITHUB_WORKSPACE}/infra"
 pwd
+echo "Installing INFRA dependencies..."
+npm install
+echo "====== DONE ======"
 echo "CDK version: $(cdk --version)"
 echo "Env: ${INPUT_CDK_ENV}"
 echo "Stack: ${INPUT_CDK_STACK}"
