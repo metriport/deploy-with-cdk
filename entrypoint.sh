@@ -36,8 +36,7 @@ echo "cdk version:"
 cdk --version
 
 # Run cdk for a specific stack
-if [[ "${INPUT_CDK_STACK_DIRECTORY}" != '' && "${INPUT_CDK_STACK}" != '' ]]; then
-  cd "${GITHUB_WORKSPACE}"/"${INPUT_CDK_STACK_DIRECTORY}"
+if [[ "${INPUT_CDK_STACK}" != '' ]]; then
   cdk ${INPUT_CDK_ACTION} ${INPUT_CDK_STACK}
   exit 0;
 fi

@@ -15,10 +15,6 @@ inputs:
     description: 'cdk stack name'
     required: false
     default: '*'
-  cdk_stack_directory:
-    description: 'cdk stack location'
-    required: false
-    default: '*'
   cdk_action:
     description: 'cdk action example: bootstrap | diff | deploy | synth'
     required: true
