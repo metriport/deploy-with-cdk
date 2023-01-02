@@ -24,5 +24,8 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: deploy.sh
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+    - run: $GITHUB_ACTION_PATH/deploy.sh
       shell: bash

@@ -31,10 +31,6 @@ fi
 
 pwd
 
-echo "Installing Node:16 ..."
-curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - &&\
-sudo apt-get install -y nodejs
-
 echo "Installing AWS CLI ..."
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
