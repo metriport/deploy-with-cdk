@@ -35,8 +35,13 @@ aws configure set default.region "${AWS_DEFAULT_REGION}"
 echo "cdk version:"
 cdk --version
 
+cd ./infra
+pwd
+cdk bootstrap -c env=$env
+
 # Run cdk for a specific stack
 if [[ "${INPUT_CDK_STACK}" != '' ]]; then
+  echo "Issuing this command: cdk ${INPUT_CDK_ACTION} ${INPUT_CDK_STACK}"
   cdk ${INPUT_CDK_ACTION} ${INPUT_CDK_STACK}
   exit 0;
 fi
