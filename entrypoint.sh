@@ -24,6 +24,11 @@ if [ "${INPUT_CDK_ACTION}" == "" ]; then
   exit 1
 fi
 
+if [ "${INPUT_CDK_ENV}" == "" ]; then
+  echo "Input INPUT_CDK_ENV cannot be empty"
+  exit 1
+fi
+
 # Configure AWS cli with a default profile
 aws configure set aws_access_key_id "${AWS_ACCESS_KEY_ID}"
 aws configure set aws_secret_access_key "${AWS_SECRET_ACCESS_KEY}"
@@ -37,7 +42,8 @@ cdk --version
 
 cd ./infra
 pwd
-cdk bootstrap -c env=$env
+echo "Env: ${INPUT_CDK_ENV}"
+cdk bootstrap -c env=${INPUT_CDK_ENV}
 
 # Run cdk for a specific stack
 if [[ "${INPUT_CDK_STACK}" != '' ]]; then

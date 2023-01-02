@@ -1,11 +1,8 @@
-name: 'Automate-CDK'
-description: 'A github action to manage your aws infrastructure by using aws cdk'
+name: 'CDK-Deploy'
+description: 'A github action to deploy our code on AWS by using CDK'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-branding:
-  icon: 'check'
-  color: 'green'
 inputs:
   cdk_version:
     description: 'aws cdk version'
@@ -13,9 +10,13 @@ inputs:
     default: 'latest'
   cdk_stack:
     description: 'cdk stack name'
-    required: false
+    required: true
+    default: '*'
+  cdk_env:
+    description: 'cdk environment being released into'
+    required: true
     default: '*'
   cdk_action:
-    description: 'cdk action example: bootstrap | diff | deploy | synth'
+    description: 'cdk action example: diff | deploy | synth'
     required: true
-    default: 'bootstrap'
+    default: 'diff'
