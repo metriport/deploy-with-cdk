@@ -48,8 +48,8 @@ echo "Env: ${INPUT_CDK_ENV}"
 
 # Run cdk for a specific stack
 if [[ "${INPUT_CDK_STACK}" != '' ]]; then
-  cdk ${INPUT_CDK_ACTION} -c env=${INPUT_CDK_ENV} ${INPUT_CDK_STACK}
+  sudo cdk ${INPUT_CDK_ACTION} -c env=${INPUT_CDK_ENV} ${INPUT_CDK_STACK}
   exit 0;
 fi
 
-cdk ${INPUT_CDK_ACTION} -c env=${INPUT_CDK_ENV}
+sudo cdk ${INPUT_CDK_ACTION} -c env=${INPUT_CDK_ENV}
