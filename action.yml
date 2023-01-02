@@ -29,3 +29,8 @@ runs:
         node-version: '16'
     - run: $GITHUB_ACTION_PATH/deploy.sh
       shell: bash
+      env:
+        INPUT_CDK_ACTION: ${{ inputs.cdk_action }}
+        INPUT_CDK_STACK: ${{ inputs.cdk_stack }}
+        INPUT_CDK_ENV: ${{ inputs.cdk_env }}
+        INPUT_CDK_VERSION: ${{ inputs.cdk_version }}
