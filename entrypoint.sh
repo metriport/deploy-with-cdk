@@ -3,8 +3,6 @@
 set -o errexit
 
 pwd
-cd /app
-pwd
 
 # Validate AWS Credentials
 
