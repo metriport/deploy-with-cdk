@@ -38,14 +38,17 @@ aws configure set default.region "${AWS_DEFAULT_REGION}"
 ## Install AWS CDK
 [[ -z "${INPUT_CDK_VERSION}" ]] && npm install -g aws-cdk || npm install -g aws-cdk@"${INPUT_CDK_VERSION}"
 
-echo "cdk version:"
-cdk --version
-
 cd "${GITHUB_WORKSPACE}/infra"
 pwd
+echo "CDK version: ${cdk --version}"
 echo "Env: ${INPUT_CDK_ENV}"
+echo "Stack: ${INPUT_CDK_STACK}"
+echo "Action: ${INPUT_CDK_ACTION}"
+
+echo "Bootstraping..."
 cdk bootstrap -c env=${INPUT_CDK_ENV}
 
+echo "Running action ${INPUT_CDK_ACTION}..."
 # Run cdk for a specific stack
 if [[ "${INPUT_CDK_STACK}" != '' ]]; then
   cdk ${INPUT_CDK_ACTION} -c env=${INPUT_CDK_ENV} ${INPUT_CDK_STACK}

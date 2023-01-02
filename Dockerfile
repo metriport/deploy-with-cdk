@@ -6,10 +6,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 RUN unzip awscliv2.zip
 RUN ./aws/install
 
-VOLUME ["/app"]
-WORKDIR /app
+COPY entrypoint.sh /usr/local/bin
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
-COPY entrypoint.sh ./
-RUN chmod +x ./entrypoint.sh
-
-ENTRYPOINT ["bash", "/app/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
