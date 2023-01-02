@@ -2,6 +2,10 @@
 
 set -o errexit
 
+pwd
+cd /app
+pwd
+
 # Validate AWS Credentials
 
 if [ "${AWS_ACCESS_KEY_ID}" == "" ]; then
