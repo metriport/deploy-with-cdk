@@ -41,15 +41,15 @@ aws configure set default.region "${AWS_DEFAULT_REGION}"
 echo "cdk version:"
 cdk --version
 
-cd ./infra
+cd "${GITHUB_WORKSPACE}/infra"
 pwd
 echo "Env: ${INPUT_CDK_ENV}"
-#cdk bootstrap -c env=${INPUT_CDK_ENV}
+cdk bootstrap -c env=${INPUT_CDK_ENV}
 
 # Run cdk for a specific stack
 if [[ "${INPUT_CDK_STACK}" != '' ]]; then
-  sudo cdk ${INPUT_CDK_ACTION} -c env=${INPUT_CDK_ENV} ${INPUT_CDK_STACK}
+  cdk ${INPUT_CDK_ACTION} -c env=${INPUT_CDK_ENV} ${INPUT_CDK_STACK}
   exit 0;
 fi
 
-sudo cdk ${INPUT_CDK_ACTION} -c env=${INPUT_CDK_ENV}
+cdk ${INPUT_CDK_ACTION} -c env=${INPUT_CDK_ENV}
