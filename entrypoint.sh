@@ -47,7 +47,7 @@ cdk --version
 cd ./infra
 pwd
 echo "Env: ${INPUT_CDK_ENV}"
-cdk bootstrap -c env=${INPUT_CDK_ENV}
+#cdk bootstrap -c env=${INPUT_CDK_ENV}
 
 # Run cdk for a specific stack
 if [[ "${INPUT_CDK_STACK}" != '' ]]; then
