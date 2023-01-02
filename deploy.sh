@@ -31,10 +31,10 @@ fi
 
 pwd
 
-echo "Installing AWS CLI ..."
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-./aws/install
+# echo "Installing AWS CLI ..."
+# curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+# unzip awscliv2.zip
+# ./aws/install
 
 # Configure AWS cli with a default profile
 aws configure set aws_access_key_id "${AWS_ACCESS_KEY_ID}"
