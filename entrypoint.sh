@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -o errexit
-
 pwd
 
 # Validate AWS Credentials
@@ -49,7 +48,6 @@ echo "Env: ${INPUT_CDK_ENV}"
 
 # Run cdk for a specific stack
 if [[ "${INPUT_CDK_STACK}" != '' ]]; then
-  echo "Issuing this command: cdk ${INPUT_CDK_ACTION} ${INPUT_CDK_STACK}"
   cdk ${INPUT_CDK_ACTION} -c env=${INPUT_CDK_ENV} ${INPUT_CDK_STACK}
   exit 0;
 fi
