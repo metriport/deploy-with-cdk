@@ -1,8 +1,8 @@
 name: 'CDK-Deploy'
 description: 'A github action to deploy our code on AWS by using CDK'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
+# runs:
+#   using: 'docker'
+#   image: 'Dockerfile'
 inputs:
   cdk_version:
     description: 'aws cdk version'
@@ -20,3 +20,9 @@ inputs:
     description: 'cdk action example: diff | deploy | synth'
     required: true
     default: 'diff'
+
+runs:
+  using: 'composite'
+  steps:
+    - run: deploy.sh
+      shell: bash
