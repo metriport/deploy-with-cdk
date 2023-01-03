@@ -20,6 +20,14 @@ inputs:
     description: "cdk stack name"
     required: true
     default: "*"
+  aws_access_key_id:
+    description: "the AWS secret id"
+    required: true
+    default: "*"
+  aws_secret_access_key:
+    description: "the AWS secret key"
+    required: true
+    default: "*"
   aws_region:
     description: "the AWS region we're deploying to"
     required: true
