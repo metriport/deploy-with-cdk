@@ -52,7 +52,7 @@ runs:
         INPUT_CDK_STACK: ${{ inputs.cdk_stack }}
         INPUT_CDK_ENV: ${{ inputs.cdk_env }}
         INPUT_CDK_VERSION: ${{ inputs.cdk_version }}
-        AWS_ACCESS_KEY_ID: "${{ input.aws_access_key_id }}"
-        AWS_SECRET_ACCESS_KEY: "${{ input.aws_secret_access_key }}"
+        AWS_ACCESS_KEY_ID: "${{ inputs.aws_access_key_id }}"
+        AWS_SECRET_ACCESS_KEY: "${{ inputs.aws_secret_access_key }}"
         AWS_DEFAULT_REGION: "${{ inputs.aws_region }}"
 
