@@ -20,18 +20,18 @@ inputs:
     description: "cdk stack name"
     required: true
     # default: "*"
-  AWS_ACCESS_KEY_ID:
-    description: "the AWS secret id"
-    required: true
-    # default: "*"
-  AWS_SECRET_ACCESS_KEY:
-    description: "the AWS secret key"
-    required: true
-    # default: "*"
-  AWS_DEFAULT_REGION:
-    description: "the AWS region we're deploying to"
-    required: true
-    # default: "*"
+  # AWS_ACCESS_KEY_ID:
+  #   description: "the AWS secret id"
+  #   required: true
+  #   # default: "*"
+  # AWS_SECRET_ACCESS_KEY:
+  #   description: "the AWS secret key"
+  #   required: true
+  #   # default: "*"
+  # AWS_DEFAULT_REGION:
+  #   description: "the AWS region we're deploying to"
+  #   required: true
+  #   # default: "*"
 
 runs:
   using: "composite"
