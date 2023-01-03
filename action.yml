@@ -8,18 +8,22 @@ inputs:
     description: 'aws cdk version'
     required: false
     default: 'latest'
-  cdk_stack:
-    description: 'cdk stack name'
-    required: true
-    default: '*'
-  cdk_env:
-    description: 'cdk environment being released into'
-    required: true
-    default: '*'
   cdk_action:
     description: 'cdk action example: diff | deploy | synth'
     required: true
     default: 'diff'
+  cdk_env:
+    description: 'cdk environment being released into'
+    required: true
+    default: '*'
+  cdk_stack:
+    description: 'cdk stack name'
+    required: true
+    default: '*'
+  aws_region:
+    description: "the AWS region we're deploying to"
+    required: true
+    default: '*'
 
 runs:
   using: 'composite'
@@ -36,3 +40,6 @@ runs:
         INPUT_CDK_STACK: ${{ inputs.cdk_stack }}
         INPUT_CDK_ENV: ${{ inputs.cdk_env }}
         INPUT_CDK_VERSION: ${{ inputs.cdk_version }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: ${{ inputs.aws_region }}
