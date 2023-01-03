@@ -1,36 +1,41 @@
-name: 'CDK-Deploy'
-description: 'A github action to deploy our code on AWS by using CDK'
+name: "CDK-Deploy"
+description: "A github action to deploy our code on AWS by using CDK"
 # runs:
 #   using: 'docker'
 #   image: 'Dockerfile'
 inputs:
   cdk_version:
-    description: 'aws cdk version'
+    description: "aws cdk version"
     required: false
-    default: 'latest'
+    default: "latest"
   cdk_action:
-    description: 'cdk action example: diff | deploy | synth'
+    description: "cdk action example: diff | deploy | synth"
     required: true
-    default: 'diff'
+    default: "diff"
   cdk_env:
-    description: 'cdk environment being released into'
+    description: "cdk environment being released into"
     required: true
-    default: '*'
+    default: "*"
   cdk_stack:
-    description: 'cdk stack name'
+    description: "cdk stack name"
     required: true
-    default: '*'
+    default: "*"
   aws_region:
     description: "the AWS region we're deploying to"
     required: true
-    default: '*'
+    default: "*"
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_DEFAULT_REGION: "${{ inputs.region }}"
 
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
     - uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: "16"
     - run: env
       shell: bash
     - run: $GITHUB_ACTION_PATH/deploy.sh
@@ -40,6 +45,3 @@ runs:
         INPUT_CDK_STACK: ${{ inputs.cdk_stack }}
         INPUT_CDK_ENV: ${{ inputs.cdk_env }}
         INPUT_CDK_VERSION: ${{ inputs.cdk_version }}
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_DEFAULT_REGION: ${{ inputs.aws_region }}
