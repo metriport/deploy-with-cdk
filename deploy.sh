@@ -50,6 +50,7 @@ echo "Installing INFRA dependencies..."
 npm install
 echo "====== DONE ======"
 echo "CDK version: $(cdk --version)"
+echo "Region: ${AWS_DEFAULT_REGION}"
 echo "Env: ${INPUT_CDK_ENV}"
 echo "Stack: ${INPUT_CDK_STACK}"
 echo "Action: ${INPUT_CDK_ACTION}"
