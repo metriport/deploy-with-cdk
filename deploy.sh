@@ -58,11 +58,12 @@ echo "Action: ${INPUT_CDK_ACTION}"
 echo "Bootstraping..."
 cdk bootstrap -c env=${INPUT_CDK_ENV}
 
-echo "Running action ${INPUT_CDK_ACTION}..."
 # Run cdk for a specific stack
 if [[ "${INPUT_CDK_STACK}" != '' ]]; then
+  echo "Running action ${INPUT_CDK_ACTION} on stack ${INPUT_CDK_STACK}..."
   cdk ${INPUT_CDK_ACTION} -c env=${INPUT_CDK_ENV} ${INPUT_CDK_STACK}
   exit 0;
 fi
 
+echo "Running action ${INPUT_CDK_ACTION} on default stack..."
 cdk ${INPUT_CDK_ACTION} -c env=${INPUT_CDK_ENV}
