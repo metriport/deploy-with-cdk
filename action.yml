@@ -27,6 +27,8 @@ runs:
     - uses: actions/setup-node@v3
       with:
         node-version: '16'
+    - run: env
+      shell: bash
     - run: $GITHUB_ACTION_PATH/deploy.sh
       shell: bash
       env:
