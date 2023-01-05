@@ -62,4 +62,4 @@ if [[ "${INPUT_CDK_STACK}" != '' ]]; then
 fi
 
 echo "Running action ${INPUT_CDK_ACTION} on default stack..."
-cdk ${INPUT_CDK_ACTION} -c env=${INPUT_CDK_ENV}
+cdk ${INPUT_CDK_ACTION} -c env=${INPUT_CDK_ENV} --all
