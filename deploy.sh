@@ -41,7 +41,8 @@ echo "Installing INFRA dependencies..."
 pwd
 cd "${GITHUB_WORKSPACE}/infra"
 pwd
-npm install
+# With --ignore-scripts so we don't run the 'prepare' script (husky install)
+npm ci --ignore-scripts
 echo "...DONE INFRA dependencies"
 
 echo "CDK version: $(cdk --version)"
