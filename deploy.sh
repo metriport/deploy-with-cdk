@@ -23,6 +23,11 @@ if [ "${INPUT_CDK_ENV}" == "" ]; then
   echo "Input INPUT_CDK_ENV cannot be empty"
   exit 1
 fi
+# relative to the root of the repo
+if [ "${INPUT_PATH}" == "" ]; then
+  INPUT_PATH="packages/infra"
+  echo "Input INPUT_PATH not set, using default '${INPUT_PATH}'"
+fi
 
 # echo "Installing AWS CLI ..."
 # curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -37,13 +42,8 @@ aws configure set default.region "${AWS_DEFAULT_REGION}"
 ## Install AWS CDK
 [[ -z "${INPUT_CDK_VERSION}" ]] && npm install -g aws-cdk || npm install -g aws-cdk@"${INPUT_CDK_VERSION}"
 
-echo "Installing INFRA dependencies..."
+cd "${GITHUB_WORKSPACE}/${INPUT_PATH}"
 pwd
-cd "${GITHUB_WORKSPACE}/infra"
-pwd
-# With --ignore-scripts so we don't run the 'prepare' script (husky install)
-npm ci --ignore-scripts
-echo "...DONE INFRA dependencies"
 
 echo "CDK version: $(cdk --version)"
 echo "Region: ${AWS_DEFAULT_REGION}"
